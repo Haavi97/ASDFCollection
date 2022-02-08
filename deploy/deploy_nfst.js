@@ -19,19 +19,19 @@ module.exports = async function({
 
 
     if (dev) {
-        const nfst = await deploy("NFST", {
+        const nfst = await deploy("NFSTCollection", {
             from: dev,
             log: true,
-            args: ["NFST", "NFST"],
+            args: [],
             deterministicDeployment: false,
         });
         console.log("Deployed collection: ", nfst.address);
         const collec = await ethers.getContractAt(nfst.abi, nfst.address);
         console.log("Collection contract retrieved");
-        await collec.mint(deployer, 3, 3, 0x0);
+        // await collec.mint(deployer, 3, 3, 0x0);
     } else {
         console.log("Didn't get any deployer")
     }
 }
 
-module.exports.tags = ["NFST"];
+module.exports.tags = ["NFSTCollection"];
